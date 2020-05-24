@@ -1,0 +1,113 @@
+<head>
+    <link rel="stylesheet" href="\static\css\semantic.min.css">
+    <link rel="stylesheet" href="\static\css\search.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="\static\css\semantic.min.js"></script>
+</head>
+<body>
+    <div class="left">
+    <div class="ui vertical menu">
+        <div class="item">
+            <div class="ui input"><input type="text" placeholder="搜索..."></div>
+        </div>
+        <div class="item">
+            你好，{{username}}
+            <div class="menu">
+            <a class="item" href="/index/">首页</a>
+                <a class="item" href='/search/'>搜索</a>
+                <a class="active item" href="/addTask/">添加</a>
+                
+            </div>
+        </div>
+        
+        <a class="item" href="/info/">
+            信息
+        </a>
+       <a class="item" href="/loginout/">
+            登出
+        </a>
+    </div>
+    </div>
+    <div class="right">
+    <p>未完成</p>
+        <table class="ui very  fixed collapsing celled table">
+        <thead>
+        <tr><th>用户名</th>
+        <th>任务名</th>
+        <th>状态</th>
+        <th>类型</th>
+        <th>创建时间</th>
+        <th>操作</th>
+    </tr></thead>
+    <tbody>
+    {%for i in running%}
+    <tr>
+      <td>{{i.username}}</td>
+      <td>{{i.taskname}}</td>
+      <td>{{i.status}}</td>
+      <td>{{i.type}}</td>
+      <td>{{i.time}}</td>
+      <td>
+      <a href="/delete/?taskid={{i.id}}"
+  <div class="ui vertical animated button" tabindex="0">
+  
+  <div class="hidden content">删除</div>
+  <div class="visible content">
+    <i class="trash alternate icon"></i>
+  </div>
+  </div>
+  </a>
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+<p>已完成</p>
+        <table class="ui very  fixed collapsing celled table">
+  <thead>
+    <tr><th>用户名</th>
+    <th>任务名</th>
+    <th>状态</th>
+    <th>类型</th>
+    <th>创建时间</th>
+    <th>操作</th>
+  </tr></thead>
+  <tbody>
+  {%for i in finshed%}
+    <tr>
+      <td>{{i.username}}</td>
+      <td>{{i.taskname}}</td>
+      <td>{{i.status}}</td>
+      <td>{{i.type}}</td>
+      <td>{{i.time}}</td>
+      <td>
+      <a href="/show/?taskid={{i.id}}">
+      <div class="ui vertical animated button" tabindex="0">
+  <div class="hidden content">查看</div>
+  <div class="visible content">
+    <i class="angle right icon"></i>
+    
+  </div>
+  
+  
+  </div>
+  </a>
+  <a href="/delete/?taskid={{i.id}}"
+  <div class="ui vertical animated button" tabindex="0">
+  
+  <div class="hidden content">删除</div>
+  <div class="visible content">
+    <i class="trash alternate icon"></i>
+  </div>
+  </div>
+  </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+        
+    </div>
+
+
+</body>

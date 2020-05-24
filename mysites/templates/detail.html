@@ -1,0 +1,62 @@
+<head>
+    <link rel="stylesheet" href="\static\css\semantic.min.css">
+    <link rel="stylesheet" href="\static\css\detail.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+
+
+    <script src="\static\css\semantic.min.js"></script>
+</head>
+<body>
+    <div class="left">
+  <div class="ui vertical menu">
+        <div class="item">
+            <div class="ui input"><input type="text" placeholder="搜索..."></div>
+        </div>
+        <div class="item">
+            你好，{{username}}
+            <div class="menu">
+            <a class="item" href="/index/">首页</a>
+                <a class="item" href='/search/'>搜索</a>
+                <a class="active item" href="/addTask/">添加</a>
+                
+            </div>
+        </div>
+        
+        <a class="item" href="/info/">
+            信息
+        </a>
+       <a class="item" href="/loginout/">
+            登出
+        </a>
+    </div>
+    </div>
+    <div class="right">
+            <label>电影id:{{result.subject}}</label><br>
+            <h2>{{result.name}}</h2><br>
+            <label>导演:{{result.director}}</label><br>
+            <label>编剧:{{result.writer}}</label><br>
+            <label>演员:{{result.actors}}</label><br>
+            <label>类型:{{result.type}}</label><br>
+            <label>上映时间:{{result.date}}</label><br>
+            <label>时长:{{result.timelong}}</label><br>
+            <label>IMDb:<a href={{result.IMDb}}>{{result.IMDb}}</a></label><br>
+            <div class="ui form">
+                <div class="field">
+                    <label>简介:</label>
+                    <textarea>{{result.text}}</textarea><br>
+                </div>
+            </div>
+            
+        
+        
+    </div>
+    <div id='chart'>
+    
+    {{myechart|safe}}
+    
+    </div>
+ 
+</h2>
+
+</body>

@@ -1,0 +1,90 @@
+<head>
+    <link rel="stylesheet" href="\static\css\semantic.min.css">
+    <link rel="stylesheet" href="\static\css\search.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="\static\css\semantic.min.js"></script>
+    
+</head>
+<body>
+    <div class="left">
+    <div class="ui vertical menu">
+        <div class="item">
+            <div class="ui input"><input type="text" placeholder="搜索..."></div>
+        </div>
+        <div class="item">
+            你好，{{username}}
+            <div class="menu">
+            <a class="item" href="/index/">首页</a>
+                <a class="item" href='/search/'>搜索</a>
+                <a class="active item" href="/addTask/">添加</a>
+                
+            </div>
+        </div>
+        
+        <a class="item" href="/info/">
+            信息
+        </a>
+       <a class="item" href="/loginout/">
+            登出
+        </a>
+    </div>
+    </div>
+    <div class="right">
+    <image id="img" src="/static/images/top250.png">
+        <form action="/add/" method="POST">
+            <label>任务类型</label>
+            <select class="ui dropdown" onchange="chg(this)" name="op">
+                <option value="0">豆瓣电影top榜</option>
+                <option value="1">豆瓣最新电影</option>
+                <option value="2">豆瓣最热电影</option>
+                <option value="3">输入关键字查询电影</option>
+            </select><br>
+            <div class="ui input">
+                <input type="text" id="select_else" name="key" placeholder="请输入关键字" style="display:none">
+            </div>
+            <br>
+            <div class="ui input">
+            <input type="text" id="show" name="pages" placeholder="请爬取的页面数" style="display:none">
+            </div>
+            <br>
+            <label>任务名</label>
+            <div class="ui input">
+                <input type="text" id="taskname" name="taskname"placeholder="请输入任务名">
+            </div>
+            <button class="ui button">提交</button>
+            <p>{{tips}}<p>
+        </form>
+    </div>
+        
+    
+
+</body>
+<script language="javascript">
+function chg(obj)
+    {
+        if(obj.options[obj.selectedIndex].value =="3")
+        {
+            document.getElementById("img").src="/static/images/search.png";
+            document.getElementById("select_else").style.display="";
+            document.getElementById("show").style.display="";
+        }
+        else if(obj.options[obj.selectedIndex].value =="0")
+        {
+            document.getElementById("img").src="/static/images/top250.png";
+            document.getElementById("select_else").style.display="none";
+            document.getElementById("show").style.display="none";
+        }
+        else if(obj.options[obj.selectedIndex].value =="2")
+        {
+            document.getElementById("img").src="/static/images/hot.png";
+            document.getElementById("select_else").style.display="none";
+            document.getElementById("show").style.display="none";
+        }
+        else{
+            document.getElementById("img").src="/static/images/new.png";
+            document.getElementById("select_else").style.display="none";
+            document.getElementById("show").style.display="none";
+        }
+        
+    }
+</script>

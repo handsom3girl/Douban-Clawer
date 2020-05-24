@@ -1,0 +1,53 @@
+<head>
+    <link rel="stylesheet" href="\static\css\semantic.min.css">
+    <link rel="stylesheet" href="\static\css\index.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="\static\css\semantic.min.js"></script>
+</head>
+<body>
+    <div class="left">
+  <div class="ui vertical menu">
+        <div class="item">
+            <div class="ui input"><input type="text" placeholder="搜索..."></div>
+        </div>
+        <div class="item">
+            你好，{{username}}
+            <div class="menu">
+            <a class="item" href="/index/">首页</a>
+                <a class="item" href='/search/'>搜索</a>
+                <a class="active item" href="/addTask/">添加</a>
+                
+            </div>
+        </div>
+        
+        <a class="item" href="/info/">
+            信息
+        </a>
+       <a class="item" href="/loginout/">
+            登出
+        </a>
+    </div>
+    </div>
+    <div class="right">
+    <form method="POST" action="/alterinfo/">
+    <label>用户名</label>
+    <div class="ui input">
+    
+                <input type="text" name="username" name="key" placeholder="请输入用户名" value="{{info.username}}"required>
+            </div>
+            <br>
+            <label>电话号</label>
+            <div class="ui input">
+            <input type="text" name="phone" placeholder="请输入电话号" value="{{info.phone}}"required>
+            </div>
+            <br>
+        <label>密码 </label>
+            <div class="ui input">
+                <input type="text" name="password"placeholder="请输入密码"required value="{{info.password}}">
+            </div>
+            <button class="ui button">提交</button>
+            </form>
+</div>
+
+
+</body>

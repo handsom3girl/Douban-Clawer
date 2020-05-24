@@ -1,0 +1,97 @@
+<head>
+    <link rel="stylesheet" href="\static\css\semantic.min.css">
+    <link rel="stylesheet" href="\static\css\index.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="\static\css\semantic.min.js"></script>
+</head>
+<body>
+    <div class="left">
+    <div class="ui vertical menu">
+        <div class="item">
+            <div class="ui input"><input type="text" placeholder="搜索..."></div>
+        </div>
+        <div class="item">
+            你好，{{username}}
+            <div class="menu">
+            <a class="item" href="/index/">首页</a>
+                <a class="item" href='/search/'>搜索</a>
+                <a class="active item" href="/addTask/">添加</a>
+                
+            </div>
+        </div>
+        
+        <a class="item" href="/info/">
+            信息
+        </a>
+       <a class="item" href="/loginout/">
+            登出
+        </a>
+    </div>
+    </div>
+    <div class="right">
+    <a href="/analyze/?taskid={{id}}">
+    <button class="ui button">可视化分析</button>
+    </a>
+    <a href="/download/?taskid={{id}}">
+    <button class="ui button">导出excel</button>
+    </a>
+        <table class="ui very  fixed collapsing celled table">
+        <thead>
+        <tr><th>电影id</th>
+        <th>电影名</th>
+        <th>评分</th>
+        <th>导演</th>
+        <th>编剧</th>
+        <th>演员</th>
+        <th>类型</th>
+        <th>上映时间</th>
+        <th>时长</th>
+        {% comment %} <th>IMDB</th> {% endcomment %}
+        {% comment %} <th>简介</th> {% endcomment %}
+        <th>五星</th>
+        <th>四星</th>
+        <th>三星</th>
+        <th>二星</th>
+        <th>一星</th>
+        <th>爬取时间</th>
+        <th>详细查看</th>
+    </tr></thead>
+    <tbody>
+    {%for i in finshed%}
+    <tr>
+      <td>{{i.subject}}</td>
+      <td>{{i.name}}</td>
+      <td>{{i.score}}<br>{{i.peoplenum}}</td>
+      <td>{{i.director}}</td>
+      <td>{{i.writer}}</td>
+      <td>{{i.actors}}</td>
+      <td>{{i.type}}</td>
+      <td>{{i.date}}</td>
+      <td>{{i.timelong}}</td>
+      {% comment %} <td>{{i.IMDb}}</td> {% endcomment %}
+      {% comment %} <td>{{i.text}}</td> {% endcomment %}
+      
+      <td>{{i.star_five}}</td>
+      <td>{{i.star_four}}</td>
+      <td>{{i.star_three}}</td>
+      <td>{{i.star_two}}</td>
+      <td>{{i.star_one}}</td>
+      <td>{{i.runtime}}</td>
+      <td>
+    <a href="/detail/?subject={{i.subject}}&taskid={{id}}"
+  <div class="ui vertical animated button" tabindex="0">
+  
+  <div class="hidden content">分析</div>
+  <div class="visible content">
+    <i class="angle double right icon"></i>
+  </div>
+  </div>
+      </td>
+    </tr>
+    {%endfor%}
+  </tbody>
+</table>
+</div>
+
+
+</body>
